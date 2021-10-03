@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>videojs-settings-menu Demo</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Urbanist"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="node_modules/video.js/dist/video-js.css" rel="stylesheet" />
+    <link href="dist/videojs-settings-menu.css" rel="stylesheet" />
+    <style>
+      body {
+        font-family: Urbanist, serif;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="vp" class="video-js vjs-default-skin vjs-16-9" controls>
+      <source
+        src="https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd"
+        type="application/dash+xml"
+      />
+      <track
+        kind="chapters"
+        src="https://s3b-assets-bucket.s3.amazonaws.com/chapters.en.vtt"
+        srclang="en"
+      />
+    </video>
+    <ul>
+      <li><a id="switch" href="#">SWITCH SOURCE.</a></li>
+      <li><a href="/test/debug.html">Run unit tests in browser.</a></li>
+      <li><a href="docs/api/">Read generated docs.</a></li>
+    </ul>
+    <script src="node_modules/video.js/dist/video.js"></script>
+    <script src="node_modules/videojs-contrib-quality-levels/dist/videojs-contrib-quality-levels.js"></script>
+    <script src="node_modules/@samueleastdev/videojs-dash-hls-bitrate-switcher/dist/videojs-dash-hls-bitrate-switcher.js"></script>
+    <script src="dist/videojs-settings-menu.js"></script>
+    <script>
+      (function (window, videojs) {
+        var examplePlayer = (window.examplePlayer = videojs("vp", {
+          techOrder: ["html5"],
+          html5: {
+            hls: {
+              overrideNative: true,
+              cacheEncryptionKeys: true,
+            },
+          },
+          plugins: {
+            dashHlsBitrateSwitcher: {
+              support: "both",
+            },
+            settingsMenu: {
+              items: [
+                "AudioTrackButton",
+                "ChaptersButton",
+                "SubsCapsButton",
+                "PlaybackRateMenuButton",
+                "RatesButton",
+              ],
+              languages: {
+                settings: "Settings",
+                loading: "Loading",
+                back: "Back",
+                captions_off: "Captions Off",
+                default_audio: "Default Audio",
+                audio: "Audio",
+                subtitles: "Subtitles",
+                chapters: "Chapters",
+                speed: "Speed",
+                quality: "Quality",
+              },
+            },
+          },
+          crossOrigin: "anonymous",
+          liveui: true,
+          autoplay: true,
+          muted: true,
+          playbackRates: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2],
+          nativeControlsForTouch: false,
+        }));
+
+        document.getElementById("switch").addEventListener("click", (_evt) => {
+          examplePlayer.src({
+            src: "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8",
+            type: "application/x-mpegURL",
+          });
+        });
+      })(window, window.videojs);
+    </script>
+  </body>
+</html>
