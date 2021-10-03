@@ -102,7 +102,6 @@ class SettingsMenu extends Plugin {
           self.buildTopLevelMenu();
         }
 
-
       });
 
     });
@@ -606,46 +605,46 @@ class SettingsMenu extends Plugin {
         };
         break;
       case 'AudioTrackButton':
-        let audio_tracks = this.player.audioTracks();
+        let audioTracks = this.player.audioTracks();
 
-        let default_audio = this.options.languages.default_audio;
+        let defaultAudio = this.options.languages.defaultAudio;
 
-        let x = audio_tracks.length;
+        let x = audioTracks.length;
 
         while (x--) {
 
-          if (audio_tracks[x].enabled) {
+          if (audioTracks[x].enabled) {
 
-            default_audio = audio_tracks[x].label;
+            defaultAudio = audioTracks[x].label;
 
           }
 
         }
         return {
-          default: default_audio,
+          default: defaultAudio,
           language: this.options.languages.audio
         };
         break;
       case 'SubsCapsButton':
 
-        let caption_tracks = this.player.textTracks();
+        let captionTracks = this.player.textTracks();
 
-        let default_captions = this.options.languages.captions_off;
+        let defaultCaptions = this.options.languages.captions_off;
 
-        let z = caption_tracks.length;
+        let z = captionTracks.length;
 
         while (z--) {
 
-          if (caption_tracks[z].kind === 'subtitles' && caption_tracks[z].mode === 'showing') {
+          if (captionTracks[z].kind === 'subtitles' && captionTracks[z].mode === 'showing') {
 
-            default_captions = caption_tracks[z].label;
+            defaultCaptions = captionTracks[z].label;
 
           }
 
         }
 
         return {
-          default: default_captions,
+          default: defaultCaptions,
           language: this.options.languages.subtitles
         };
 
@@ -692,9 +691,9 @@ class SettingsMenu extends Plugin {
 
     state = state.replace(/\s\s+/g, ' ');
 
-    let state_comma = state.indexOf(',');
+    let stateComma = state.indexOf(',');
 
-    state = state.substring(0, state_comma != -1 ? state_comma : state.length);
+    state = state.substring(0, stateComma != -1 ? stateComma : state.length);
 
     state = state.replace(/(<([^>]+)>)/ig, "");
 
