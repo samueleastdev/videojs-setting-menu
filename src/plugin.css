@@ -158,20 +158,6 @@
   vertical-align: bottom !important;
 }
 
-/* Captions settings */
-.video-js .vjs-modal-dialog.vjs-text-track-settings {
-  background-color: rgba(0, 0, 0, 0.7) !important;
-}
-
-.video-js .vjs-control.vjs-close-button {
-  cursor: pointer;
-  height: 3em;
-  position: absolute !important;
-  right: 0;
-  top: 0.5em;
-  z-index: 2;
-}
-
 .video-js .vjs-text-track-settings select {
   background: #fff !important;
   color: #000 !important;
