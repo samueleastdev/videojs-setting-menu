@@ -1,12 +1,13 @@
 {
   "name": "@samueleastdev/videojs-settings-menu",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "VideoJS settings menu for Quality, Chapters, Subtitles, Playback rates and more",
   "main": "cjs/plugin.js",
   "module": "es/plugin.js",
+  "author": "Samuel East",
   "browser": "dist/videojs-settings-menu.js",
   "homepage": "https://github.com/samueleastdev/videojs-setting-menu",
-  "url": "https://github.com/samueleastdev/videojs-setting-menu/issues",
+  "bugs": "https://github.com/samueleastdev/videojs-setting-menu/issues",
   "generator-videojs-plugin": {
     "version": "8.0.0"
   },
