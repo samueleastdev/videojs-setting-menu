@@ -10,7 +10,7 @@ VideoJS settings menu for Quality, Chapters, Subtitles, Playback rates and more
 ## Installation
 
 ```sh
-npm install --save videojs-settings-menu
+npm install --save @samueleastdev/videojs-settings-menu
 ```
 
 ## Usage
