@@ -68,6 +68,12 @@ class SettingsMenu extends Plugin {
       }
     });
 
+    // Listen to the event from the bitrate switcher
+    this.player.on("playbackRateSwitched", function(e) {
+      let rate = e.target.player.playbackRateSwitched;
+      this.getChild('controlBar').getChild('settingsMenuButton').controlText(`${rate.height}p, ${self.formatBps(rate.bitrate)}`);
+    });
+
     // close the menu if open on userinactive
     this.player.on('userinactive', function() {
 
@@ -740,6 +746,26 @@ class SettingsMenu extends Plugin {
     state = state.replace(/(<([^>]+)>)/ig, "");
 
     return state;
+
+  }
+
+  /**
+   *
+   * @param {*} bits
+   * @returns
+   */
+  formatBps(bits) {
+
+    let i = -1;
+
+    const byteUnits = [' kbps', ' Mbps', ' Gbps', ' Tbps', 'Pbps', 'Ebps', 'Zbps', 'Ybps'];
+
+    do {
+      bits = bits / 1024;
+      i++;
+    } while (bits > 1024);
+
+    return Math.max(bits, 0.1).toFixed(1) + byteUnits[i];
 
   }
 }
