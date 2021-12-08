@@ -201,8 +201,29 @@ class SettingsMenu extends Plugin {
 
     main.appendChild(menuTitle);
 
+    // Filter buttons that dont have tracks
+    let comps = [];
+    let chapter = false;
+    let subtitles = false;
+    if (self.player.textTracks().tracks_) {
+      self.player.textTracks().tracks_.forEach((ele) => {
+        if (ele.kind === 'chapters') {
+          chapter = true;
+        }
+        if (ele.kind === 'subtitles' || ele.kind === 'captions') {
+          subtitles = true;
+        }
+      });
+    }
+    if (!chapter) {
+      comps.push('ChaptersButton');
+    }
+    if (!subtitles) {
+      comps.push('SubsCapsButton');
+    }
+
     // Loop through the settings menu items
-    self.options.items.forEach(component => {
+    self.options.items.filter(item => !comps.includes(item)).forEach(component => {
 
       // First check if component exists
       if (self.player.getChild('controlBar').getChild(component)) {
@@ -313,15 +334,36 @@ class SettingsMenu extends Plugin {
 
     menuTopLevel.appendChild(menuTitle);
 
+    // Filter buttons that dont have tracks
+    let comps = [];
+    let chapter = false;
+    let subtitles = false;
+    if (self.player.textTracks().tracks_) {
+      self.player.textTracks().tracks_.forEach((ele) => {
+        if (ele.kind === 'chapters') {
+          chapter = true;
+        }
+        if (ele.kind === 'subtitles' || ele.kind === 'captions') {
+          subtitles = true;
+        }
+      });
+    }
+    if (!chapter) {
+      comps.push('ChaptersButton');
+    }
+    if (!subtitles) {
+      comps.push('SubsCapsButton');
+    }
+
     // Loop through the settings menu items
-    this.options.items.forEach(component => {
+    self.options.items.filter(item => !comps.includes(item)).forEach(component => {
 
       // First check if component exists
-      if (this.player.getChild('controlBar').getChild(component)) {
+      if (self.player.getChild('controlBar').getChild(component)) {
 
-        this.player.getChild('controlBar').getChild(component).addClass('vjs-hide-settings-menu-item');
+        self.player.getChild('controlBar').getChild(component).addClass('vjs-hide-settings-menu-item');
 
-        let textContent = this.setInitialStates(component);
+        let textContent = self.setInitialStates(component);
 
         let settingItem = document.createElement('li');
 
@@ -349,7 +391,7 @@ class SettingsMenu extends Plugin {
 
         // Nasty little hack for chapters buttons as it seems to load after the canplay event
         setTimeout(() => {
-          this.mobileBuildSecondLevelMenu(component, settingsButton.el());
+          self.mobileBuildSecondLevelMenu(component, settingsButton.el());
         }, (component === 'ChaptersButton') ? 1000 : 0);
 
       }

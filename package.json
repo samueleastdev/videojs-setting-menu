@@ -1,6 +1,6 @@
 {
   "name": "@samueleastdev/videojs-settings-menu",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "VideoJS settings menu for Quality, Chapters, Subtitles, Playback rates and more",
   "main": "cjs/plugin.js",
   "module": "es/plugin.js",
@@ -47,7 +47,6 @@
     "videojs",
     "videojs-plugin"
   ],
-  "author": "Samuel East",
   "license": "MIT",
   "vjsstandard": {
     "ignore": [
@@ -75,19 +74,19 @@
   "dependencies": {
     "@samueleastdev/videojs-dash-hls-bitrate-switcher": "0.0.7",
     "global": "^4.4.0",
-    "video.js": "^7.15.4",
+    "video.js": "^7.17.0",
     "videojs-contrib-quality-levels": "^2.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.7",
-    "@babel/runtime": "^7.15.4",
+    "@babel/cli": "^7.16.0",
+    "@babel/runtime": "^7.16.3",
     "@videojs/babel-config": "^0.2.0",
     "@videojs/generator-helpers": "~2.0.2",
     "jsdoc": "^3.6.7",
-    "karma": "^6.3.4",
-    "postcss": "^8.3.8",
+    "karma": "^6.3.9",
+    "postcss": "^8.4.4",
     "postcss-cli": "^8.3.1",
-    "rollup": "^2.58.0",
+    "rollup": "^2.60.2",
     "sinon": "^9.1.0",
     "videojs-generate-karma-config": "^8.0.1",
     "videojs-generate-postcss-config": "~3.0.0",
