@@ -183,7 +183,7 @@ class SettingsMenu extends Plugin {
 
     const settingsButton = self.player.getChild('controlBar').getChild('settingsMenuButton');
 
-    settingsButton.addClass('vjs-settings-menu-is-loaded');
+    //settingsButton.addClass('vjs-settings-menu-is-loaded');
 
     const menu = settingsButton.menu;
 
