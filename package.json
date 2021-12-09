@@ -1,6 +1,6 @@
 {
   "name": "@samueleastdev/videojs-settings-menu",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "VideoJS settings menu for Quality, Chapters, Subtitles, Playback rates and more",
   "main": "cjs/plugin.js",
   "module": "es/plugin.js",

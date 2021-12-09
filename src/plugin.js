@@ -379,12 +379,6 @@ class SettingsMenu extends Plugin {
 
         settingItem.className = 'vjs-sm-top-level-item';
 
-        let settingItem_inner_arrow = document.createElement('i');
-
-        settingItem_inner_arrow.className = 'setting-menu-list-arrow setting-menu-list-arrow-right';
-
-        settingItem.appendChild(settingItem_inner_arrow);
-
         let settingItemSpan = document.createElement('span');
 
         settingItemSpan.id = self.playerId + '-setting-menu-child-span-' + component.toLowerCase();
